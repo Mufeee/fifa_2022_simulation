@@ -72,10 +72,9 @@ class Game:
         self.home_team = home_team
         self.away_team = away_team
         self.home_advantage = home_advantage
-
-    def get_prediction(self):
-        import numpy as np
-        #return a multinomial distribution with the probability of win,draw,loss for each team
+    
+    def simulate():
+        pass
 
 
 class Player:
@@ -85,7 +84,7 @@ class Player:
         self.strength = strength
 
 '''
-create a group obect that holds 4 teams
+create a group object that holds 4 teams
 '''        
 class Group:
     def __init__(self, group_name, teams):
@@ -96,9 +95,8 @@ class Group:
 create a game result object that holds the result and cards of the football game
 '''
 class GameResult:
-    def __init__(self, home_team, away_team, home_goals, away_goals, home_yellow_cards, away_yellow_cards, home_red_cards, away_red_cards):
-        self.home_team = home_team
-        self.away_team = away_team
+    def __init__(self, game, home_goals, away_goals, home_yellow_cards, away_yellow_cards, home_red_cards, away_red_cards):
+        self.game = game
         self.home_goals = home_goals
         self.away_goals = away_goals
         self.home_yellow_cards = home_yellow_cards
@@ -106,7 +104,7 @@ class GameResult:
         self.home_red_cards = home_red_cards
         self.away_red_cards = away_red_cards
 
-    def get_result(self):
+    def get_game_result(self):
         if self.home_goals > self.away_goals:
             return 1
         elif self.home_goals < self.away_goals:
