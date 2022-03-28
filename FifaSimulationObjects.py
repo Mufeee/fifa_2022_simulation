@@ -6,12 +6,12 @@ class Team:
         self.ranking = ranking
         self.total_strength = total_strength
         #those variables are future extensions to extend the class for more complex predictions
-        self.region = None
-        self.attack_strength = 0
-        self.midfield_strength = 0
-        self.defence_strength = 0
-        self.team_form = 0
-        self.Roster = {}
+        #self.region = None
+        #self.attack_strength = 0
+        #self.midfield_strength = 0
+        #self.defence_strength = 0
+        #self.team_form = 0
+        #self.Roster = {}
 
     def get_confederation(self):
         confederation_dict = {'South Korea':'AFC','Japan':'AFC','Saudi Arabia':'AFC','Iran':'AFC','UAE':'AFC','Iraq':'AFC','Lebanon':'AFC',
@@ -68,14 +68,22 @@ class Team:
 
 #define a Game class with 2 teams, home and away, home advantage and prediction
 class Game:
-    def __init__(self, home_team, away_team, home_advantage):
+    def __init__(self, game_number, home_team, away_team, home_advantage,is_group_stage):
+        self.game_number = game_number
         self.home_team = home_team
         self.away_team = away_team
         self.home_advantage = home_advantage
+        self.is_group_stage = is_group_stage
     
-    def simulate():
-        pass
-
+    def simulate(self):
+        import numpy as np
+        if self.is_group_stage:
+            return GameResult(self,np.random.randint(0,5),np.random.randint(0,5),np.random.randint(0,5),np.random.randint(0,5),0,0)
+        else:
+            res = GameResult(self,np.random.randint(0,5),np.random.randint(0,5),np.random.randint(0,5),np.random.randint(0,5),0,0)
+            ## Random code just to avoid draw for now if it is not a group stage game
+            if res.home_goals == res.away_goals:
+                res.home_goals += 1
 
 class Player:
     def __init__(self, name, position, strength):
@@ -87,8 +95,8 @@ class Player:
 create a group object that holds 4 teams
 '''        
 class Group:
-    def __init__(self, group_name, teams):
-        self.group_name = group_name
+    def __init__(self, name, teams):
+        self.name = name
         self.teams = teams
         
 '''
@@ -111,3 +119,14 @@ class GameResult:
             return -1
         else:
             return 0
+'''
+Worldcup final results class that holds the final results of the world cup
+'''
+class WorldcupFinalResults:
+    def __init__(self, winner, runner_up, third_place, fourth_place, quarter_finalists, r16s):
+        self.winner = winner
+        self.runner_up = runner_up
+        self.third_place = third_place
+        self.fourth_place = fourth_place
+        self.quarter_finalists = quarter_finalists
+        self.r16s = r16s
