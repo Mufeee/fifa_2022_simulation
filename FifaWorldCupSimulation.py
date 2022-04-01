@@ -4,6 +4,7 @@ import numpy as np
 '''
 creating a list of dataframes to hold the results of the group stage
 '''
+#I'm an asshole
 def initation_groups_results_lists(wc_groups_list):
     wc_group_results_dict = {}
     for group in wc_groups_list:
