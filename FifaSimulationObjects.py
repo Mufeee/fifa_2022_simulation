@@ -1,10 +1,12 @@
 #define Team class with ranking and strength properties
 class Team:
 
-    def __init__(self, name, ranking, total_strength):
+    def __init__(self, name, ranking, total_strength, group, group_position):
         self.name = name
         self.ranking = ranking
         self.total_strength = total_strength
+        self.group = group
+        self.group_position = group_position
         #those variables are future extensions to extend the class for more complex predictions
         #self.region = None
         #self.attack_strength = 0
